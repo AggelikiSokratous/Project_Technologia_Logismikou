@@ -3,7 +3,6 @@ package com.mycompany.texnologia;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
-
 public class Gui extends javax.swing.JFrame {
 
 
