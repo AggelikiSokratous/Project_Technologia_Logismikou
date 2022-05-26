@@ -39,4 +39,7 @@ public class Manager_Project_Manager {//utility class
         
         //Code to store the project in the pending applications of the user specified in a database, it will not be implemented
     }
+    static void setGrade(String title,String grade){
+    //updates the value of the grade in the database, the code will not be implemented
+    }
 }
