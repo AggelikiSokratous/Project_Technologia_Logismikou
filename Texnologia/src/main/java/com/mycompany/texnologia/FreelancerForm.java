@@ -124,7 +124,7 @@ public class FreelancerForm extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ComunicationPage aj=new ComunicationPage();
+        ComunicationPage aj=new ComunicationPage(1);
         aj.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 

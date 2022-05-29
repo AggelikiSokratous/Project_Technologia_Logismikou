@@ -14,11 +14,14 @@ import javax.swing.table.DefaultTableModel;
 public class ComunicationPage extends javax.swing.JFrame {
 static String receiver="";
 static String sender="";
+    private final int a;
     /**
      * Creates new form ComunicationPage
      */
-    public ComunicationPage() {
+    public ComunicationPage(int a) {
         initComponents();
+        this.a = a;
+        if(a == 2)jButton2.setVisible(false);
     }
 
     /**
@@ -214,7 +217,7 @@ static String sender="";
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ComunicationPage().setVisible(true);
+                new ComunicationPage(1).setVisible(true);
             }
         });
     }
