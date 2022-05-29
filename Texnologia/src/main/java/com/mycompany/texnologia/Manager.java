@@ -14,7 +14,8 @@ public class Manager {
     String Rating="";
     String Payment_data="";
     
-    void paymentPage(int Iban) {
+    boolean paymentPage(int Iban) {
         //using the iban argument and the paument data the Manager provided during login it will handle the payment, this will not be implemented
+    return true;
     }
 }
