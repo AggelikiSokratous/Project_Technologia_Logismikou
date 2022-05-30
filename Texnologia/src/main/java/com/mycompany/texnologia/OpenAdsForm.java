@@ -37,6 +37,7 @@ public class OpenAdsForm extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class OpenAdsForm extends javax.swing.JFrame {
         jLabel4.setText("Category");
 
         jLabel5.setText("Description");
+
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +92,9 @@ public class OpenAdsForm extends javax.swing.JFrame {
                             .addComponent(jTextField3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,7 +121,9 @@ public class OpenAdsForm extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
@@ -124,6 +136,13 @@ public class OpenAdsForm extends javax.swing.JFrame {
         Popup x= new Popup(); 
         x.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.setVisible(false);
+        Popup x= new Popup(); 
+        x.setVisible(true);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +181,7 @@ public class OpenAdsForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
