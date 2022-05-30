@@ -156,7 +156,7 @@ public class EmployerForm extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
        this.setVisible(false);
-       Messenger mes=new Messenger();
+       EmployerMessenger mes=new EmployerMessenger();
        mes.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 

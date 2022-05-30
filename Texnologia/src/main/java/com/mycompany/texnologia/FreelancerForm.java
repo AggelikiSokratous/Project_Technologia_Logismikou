@@ -152,7 +152,7 @@ public class FreelancerForm extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         this.setVisible(false);
-        Messenger mes=new Messenger();
+        FreelancerMessenger mes=new FreelancerMessenger();
         mes.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
