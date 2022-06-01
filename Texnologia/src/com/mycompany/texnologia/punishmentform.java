@@ -37,10 +37,11 @@ Connection connect=null;
             String query="SELECT * FROM PUNISHMENT WHERE NAME=? ";
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/oddjob", "root", "");
             ps = connect.prepareStatement(query);
+            ps.setString(1,pusername);
             ResultSet rs = ps.executeQuery();
             ResultSetMetaData Rss = rs.getMetaData();
             c = Rss.getColumnCount();
-
+                
             DefaultTableModel Df = (DefaultTableModel)jTable1.getModel();
             Df.setRowCount(0);
             while(rs.next())

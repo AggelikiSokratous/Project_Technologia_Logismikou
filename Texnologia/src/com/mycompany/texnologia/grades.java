@@ -4,18 +4,75 @@
  */
 package com.mycompany.texnologia;
 
+import static com.mycompany.texnologia.CompletedJobsPage.pusername;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fithi
  */
 public class grades extends javax.swing.JFrame {
-
+ static String pursername;
+  Connection connect=null;
+    PreparedStatement ps=null;
+    PreparedStatement ps2=null;
+    ResultSet rs=null;
     /**
      * Creates new form grades
      */
-    public grades() {
+    public grades(String username) {
         initComponents();
+        pusername=username;
+        updateTable();
     }
+    private void updateTable()
+    {int c;
+        try {
+            String query1="SELECT * FROM COMPLETEDJOBS WHERE EMPLOYER=? OR FREELANCER=?";
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/oddjob", "root", "");
+            ps = connect.prepareStatement(query1);
+            ps.setString(1,pusername);
+            ps.setString(2,pusername);
+            ResultSet rs = ps.executeQuery();
+            String title;
+            DefaultTableModel Df = (DefaultTableModel)jTable1.getModel();
+            Df.setRowCount(0);
+            while (rs.next()){
+                
+            title=rs.getString("Title");
+            String query="SELECT * FROM GRADES WHERE TITLE=? ";
+            ps2 = connect.prepareStatement(query);
+            ps2.setString(1,title);
+            ResultSet rs2 = ps2.executeQuery();
+            ResultSetMetaData Rss = rs2.getMetaData();
+            c = Rss.getColumnCount();
+
+            while(rs2.next())
+            {
+                Vector v2 = new Vector();
+                for(int a=1; a<=c; a++)
+                {
+                    v2.add(rs2.getString("Title"));
+                    v2.add(rs2.getString("Grade"));
+                }
+
+                Df.addRow(v2);
+            }
+            }
+            
+        } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +83,63 @@ public class grades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Title", "Grade"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        profile p=new profile(pusername);
+        p.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +171,14 @@ public class grades extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new grades().setVisible(true);
+                new grades(pusername).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

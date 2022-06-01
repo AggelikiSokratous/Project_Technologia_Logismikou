@@ -210,13 +210,14 @@ public class ActiveJob extends javax.swing.JFrame {
         ps.executeQuery();
         }
         else{
-        String query1="INSERT INTO COMPLETEDJOBS VALUES (?,?,?,?) ";
+        String query1="INSERT INTO COMPLETEDJOBS VALUES (?,?,?,?,?) ";
         ps = connect.prepareStatement(query1);
         
         ps.setString(1, title);
         ps.setString(2, deadline);
         ps.setString(3, "completed");
         ps.setString(4, Df.getValueAt(SelectedIndex, 0).toString());
+        ps.setString(5, pusername);
         ps.executeQuery();
         }
         
